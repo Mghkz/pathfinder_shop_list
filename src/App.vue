@@ -16,13 +16,16 @@
         <table class="table">
           <thead>
             <th>Item Name</th>
+            <th>Type</th>
             <th>Quantity</th>
             <th>Price</th>
           </thead>
 
           <tbody>
             <tr div v-for="(item) in selShop.items">
-              <td>{{ item.name }}</td>
+              <!--<td>{{ item.name }}</td>-->
+              <td><a class="link-primary" target="_blank" :href="'https://2e.aonprd.com/Search.aspx?q=' + item.name">{{ item.name }}</a></td>
+              <td>{{ item.type }}</td>
               <td>{{ item.system.quantity }}</td>
               <td>
                 <div v-for="(price, key) in item.system.price.value " >{{ price }} {{ key }}</div>
