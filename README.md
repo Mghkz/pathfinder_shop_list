@@ -33,3 +33,12 @@ npm run build
 ```sh
 npm run lint
 ```
+
+
+### Netlify
+
+```sh
+ntl deploy
+ntl deploy --prod
+netlify open
+```
