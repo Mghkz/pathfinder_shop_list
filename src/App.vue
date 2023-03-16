@@ -24,7 +24,14 @@
           <tbody>
             <tr div v-for="(item) in selShop.items">
               <!--<td>{{ item.name }}</td>-->
-              <td><a class="link-primary" target="_blank" :href="'https://2e.aonprd.com/Search.aspx?q=' + item.name">{{ item.name }}</a></td>
+              <td>
+                <p>
+                  <a class="link-primary" target="_blank" :href="'https://2e.aonprd.com/Search.aspx?q=' + item.name" data-bs-html="true" data-bs-toggle="tooltip" :data-bs-title="item.system.description.value">{{ item.name }}</a>
+                </p>
+                <p>
+                  <a v-for="(trait) in item.system.traits.value" target="_blank" :href="'https://2e.aonprd.com/Search.aspx?q=' + trait" class="btn btn-outline-info btn-sm mx-1" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">{{ trait }}</a>
+                </p>
+              </td>
               <td>{{ item.type }}</td>
               <td>{{ item.system.quantity }}</td>
               <td>
@@ -45,6 +52,7 @@
 </template>
 
 <script >
+import { Tooltip } from 'bootstrap'
 
 export default {
   data() {
@@ -86,6 +94,12 @@ export default {
         })
 
     }
+  },
+  mounted() {
+    new Tooltip(document.body, {
+      selector: "[data-bs-toggle='tooltip']",
+      trigger : 'hover'
+    })
   }
 }
 </script>
